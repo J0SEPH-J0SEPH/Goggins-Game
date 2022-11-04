@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Obsticals/PlatformObsticals/MovingPlatform/ZSpeepPlatform/SleepingHead.gd" type="Script" id=1]
+[ext_resource path="res://Obsticals/PlatformObsticals/MovingPlatform/ZSpeepPlatform/SleepingHead.png" type="Texture" id=2]
+
+[node name="SleepingHead" type="Sprite"]
+position = Vector2( 242, 138 )
+texture = ExtResource( 2 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+[connection signal="screen_entered" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_entered"]
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

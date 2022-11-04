@@ -1,0 +1,84 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://Characters/Enimes/Undead/FunkySkelliton/Animations/Walk1.png" type="Texture" id=1]
+[ext_resource path="res://Characters/Enimes/Undead/FunkySkelliton/Animations/Walk5.png" type="Texture" id=2]
+[ext_resource path="res://Characters/Enimes/Undead/FunkySkelliton/Animations/Walk7.png" type="Texture" id=3]
+[ext_resource path="res://Characters/Enimes/Undead/FunkySkelliton/Animations/Walk2.png" type="Texture" id=4]
+[ext_resource path="res://Characters/Enimes/Undead/FunkySkelliton/Animations/Walk3.png" type="Texture" id=5]
+[ext_resource path="res://Characters/Enimes/Undead/FunkySkelliton/Animations/Walk4.png" type="Texture" id=6]
+[ext_resource path="res://Characters/Enimes/Undead/FunkySkelliton/SkellyBobber.gd" type="Script" id=7]
+[ext_resource path="res://Characters/Enimes/Undead/FunkySkelliton/Animations/Walk6.png" type="Texture" id=8]
+[ext_resource path="res://Characters/Enimes/Undead/FunkySkelliton/Animations/Jump2.png" type="Texture" id=9]
+[ext_resource path="res://Characters/Enimes/Undead/FunkySkelliton/Animations/Jump1.png" type="Texture" id=10]
+[ext_resource path="res://Characters/Enimes/Undead/FunkySkelliton/SkellyBobberHead.gd" type="Script" id=11]
+[ext_resource path="res://Obsticals/PlatformObsticals/MovingPlatform/ZSpeepPlatform/Z1.png" type="Texture" id=12]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 10 ), ExtResource( 9 ) ],
+"loop": false,
+"name": "Jump",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 1 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 2 ), ExtResource( 8 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "Walk",
+"speed": 10.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 16, 4 )
+
+[sub_resource type="CapsuleShape2D" id=4]
+radius = 2.0
+height = 28.0
+
+[node name="SkellyBobber" type="Node2D"]
+
+[node name="KinematicBody2D" type="KinematicBody2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource( 7 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="KinematicBody2D"]
+position = Vector2( 0, -23 )
+frames = SubResource( 1 )
+animation = "Walk"
+playing = true
+offset = Vector2( 6, 0 )
+
+[node name="CheckJump" type="RayCast2D" parent="KinematicBody2D"]
+position = Vector2( 16, -2 )
+enabled = true
+cast_to = Vector2( 0, 3 )
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
+position = Vector2( 0, -10 )
+shape = SubResource( 2 )
+
+[node name="Position2D" type="Position2D" parent="KinematicBody2D"]
+position = Vector2( 8, -36 )
+
+[node name="KinematicBody2D2" type="KinematicBody2D" parent="."]
+collision_layer = 2
+motion/sync_to_physics = true
+script = ExtResource( 11 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="KinematicBody2D2"]
+shape = SubResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="KinematicBody2D2"]
+visible = false
+texture = ExtResource( 12 )
+
+[node name="PlayerDettection" type="Area2D" parent="KinematicBody2D2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D2/PlayerDettection"]
+position = Vector2( 0, -6 )
+rotation = 1.5708
+shape = SubResource( 4 )
+[connection signal="body_entered" from="KinematicBody2D2/PlayerDettection" to="KinematicBody2D2" method="_on_PlayerDettection_body_entered"]
+[connection signal="body_exited" from="KinematicBody2D2/PlayerDettection" to="KinematicBody2D2" method="_on_PlayerDettection_body_exited"]

@@ -1,0 +1,216 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://Characters/Enimes/ForestWorld/Lord Goopnbounce/LrdGB1.png" type="Texture" id=1]
+[ext_resource path="res://Characters/Enimes/ForestWorld/Lord Goopnbounce/LrdGB2.png" type="Texture" id=2]
+[ext_resource path="res://Characters/Enimes/ForestWorld/Lord Goopnbounce/LrdGB5.png" type="Texture" id=3]
+[ext_resource path="res://Characters/Enimes/ForestWorld/Lord Goopnbounce/LrdGB4.png" type="Texture" id=4]
+[ext_resource path="res://Characters/Enimes/ForestWorld/Lord Goopnbounce/LrdGB3.png" type="Texture" id=5]
+[ext_resource path="res://Characters/Enimes/ForestWorld/Lord Goopnbounce/LrdGB.gd" type="Script" id=6]
+[ext_resource path="res://Characters/Enimes/DefaultScripts/DamagePlayer.gd" type="Script" id=7]
+[ext_resource path="res://Characters/Enimes/DefaultScripts/Hitpoint.gd" type="Script" id=8]
+[ext_resource path="res://Characters/Enimes/ParticalEffects/Explosions/32Size/32Size3.png" type="Texture" id=9]
+[ext_resource path="res://Characters/Enimes/ParticalEffects/Explosions/32Size/32Size4.png" type="Texture" id=10]
+[ext_resource path="res://Characters/Enimes/ParticalEffects/Explosions/32Size/32Size5.png" type="Texture" id=11]
+[ext_resource path="res://Characters/Enimes/ParticalEffects/Explosions/32Size/32Size7.png" type="Texture" id=12]
+[ext_resource path="res://Characters/Enimes/ParticalEffects/Explosions/32Size/32Size6.png" type="Texture" id=13]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 13.0
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 8.06226
+
+[sub_resource type="Animation" id=3]
+length = 1.2
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25, 0.35, 0.4, 0.8, 1.15, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 1 ), ExtResource( 2 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 5 ), ExtResource( 1 ) ]
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath(".:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.3, 0.8, 1.2 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath(".:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.1, -29.5, -100, -0.25, 0, 0.25, 0, 0, -0.0600001, -36.5, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.3, 0.8, 1.2 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("CollisionShape2D:position:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.3, 0.35, 0.55, 0.8, 1.1, 1.15, 1.2 )
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("CollisionShape2D:position:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( -13, -0.25, 0, 0.25, 0, -15, -0.25, 0, 0.25, 0, -18, -0.25, 0, 0.25, 0, -22, -0.25, 0, 0.25, 0, -22, -0.25, 0, 0.25, 0, -16, -0.25, 0, 0.25, 0, -13, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.3, 0.35, 0.55, 0.8, 1.1, 1.15, 1.2 )
+}
+tracks/5/type = "bezier"
+tracks/5/path = NodePath("Head:position:x")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"points": PoolRealArray( -4, -0.25, 0, 0.25, 0, -4, -0.25, 0, 0.25, 0, -4, -0.25, 0, 0.25, 0, -4, -0.25, 0, 0.25, 0, -4, -0.25, 0, 0.25, 0, -4, -0.25, 0, 0.25, 0, -4, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.35, 0.65, 0.85, 1.05, 1.15, 1.2 )
+}
+tracks/6/type = "bezier"
+tracks/6/path = NodePath("Head:position:y")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"points": PoolRealArray( -22, -0.25, 0, 0.25, 0, -25, -0.25, 0, 0.25, 0, -32, -0.25, 0, 0.25, 0, -31, -0.25, 0, 0.25, 0, -32, -0.25, 0, 0.25, 0, -25, -0.25, 0, 0.25, 0, -22, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.35, 0.65, 0.85, 1.05, 1.15, 1.2 )
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "dead"
+step = 0.01
+tracks/0/type = "method"
+tracks/0/path = NodePath("Hitpoint")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"values": [  ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("DamagePlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "Dead"
+} ]
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("Sprite:modulate:r")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 43.27, -0.25, 0, 0.25, 0, 43.27, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.05, 0.06, 0.1, 0.15 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("Sprite:modulate:g")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 41.42, -0.25, 0, 0.25, 0, 41.42, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.05, 0.06, 0.1, 0.15 )
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("Sprite:modulate:b")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 43.27, -0.25, 0, 0.25, 0, 43.27, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.05, 0.06, 0.1, 0.15 )
+}
+tracks/5/type = "bezier"
+tracks/5/path = NodePath("Sprite:modulate:a")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.05, 0.06, 0.1, 0.15 )
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Sprite:texture")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.15, 0.25, 0.35, 0.45, 0.58, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 13 ), ExtResource( 12 ), null ]
+}
+
+[node name="LrdGB" type="Node2D"]
+script = ExtResource( 6 )
+
+[node name="Hitpoint" type="Area2D" parent="."]
+position = Vector2( 0, -74.4101 )
+collision_layer = 4
+collision_mask = 273
+script = ExtResource( 8 )
+MaxHealth = 1
+Health = 1
+
+[node name="DamagePlayer" type="Node2D" parent="Hitpoint"]
+script = ExtResource( 7 )
+
+[node name="Sprite" type="Sprite" parent="Hitpoint"]
+position = Vector2( 0, -20 )
+texture = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitpoint"]
+position = Vector2( 0, -18 )
+shape = SubResource( 1 )
+
+[node name="Head" type="CollisionShape2D" parent="Hitpoint"]
+position = Vector2( -4, -31.3367 )
+shape = SubResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Hitpoint"]
+anims/bounce = SubResource( 3 )
+anims/dead = SubResource( 4 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+[connection signal="area_entered" from="Hitpoint" to="Hitpoint" method="_on_Hitpoint_area_entered"]
+[connection signal="body_entered" from="Hitpoint" to="Hitpoint/DamagePlayer" method="_on_Hitpoint_body_entered"]
+[connection signal="body_exited" from="Hitpoint" to="Hitpoint/DamagePlayer" method="_on_Hitpoint_body_exited"]
+[connection signal="screen_entered" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_entered"]
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

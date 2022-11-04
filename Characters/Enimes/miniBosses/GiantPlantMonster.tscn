@@ -1,0 +1,602 @@
+[gd_scene load_steps=41 format=2]
+
+[ext_resource path="res://Characters/Enimes/miniBosses/GiantFlower/TeFlower3.png" type="Texture" id=1]
+[ext_resource path="res://Characters/Enimes/miniBosses/FlowerBoss.gd" type="Script" id=2]
+[ext_resource path="res://Characters/Enimes/miniBosses/GiantFlower/TeFlower13.png" type="Texture" id=3]
+[ext_resource path="res://Characters/Enimes/miniBosses/GiantFlower/TeFlower15.png" type="Texture" id=4]
+[ext_resource path="res://Characters/Enimes/miniBosses/GiantFlower/TeFlower9.png" type="Texture" id=5]
+[ext_resource path="res://Characters/Enimes/miniBosses/GiantFlower/TeFlower14.png" type="Texture" id=6]
+[ext_resource path="res://Characters/Enimes/miniBosses/GiantFlower/TeFlower11.png" type="Texture" id=7]
+[ext_resource path="res://Characters/Enimes/miniBosses/GiantFlower/TeFlower1.png" type="Texture" id=8]
+[ext_resource path="res://Characters/Enimes/miniBosses/GiantFlower/TeFlower12.png" type="Texture" id=9]
+[ext_resource path="res://Characters/Enimes/miniBosses/GiantFlower/TeFlower7.png" type="Texture" id=10]
+[ext_resource path="res://Characters/Enimes/miniBosses/GiantFlower/TeFlower5.png" type="Texture" id=11]
+[ext_resource path="res://Characters/Enimes/miniBosses/GiantFlower/TeFlower4.png" type="Texture" id=12]
+[ext_resource path="res://Characters/Enimes/miniBosses/GiantFlower/TeFlower10.png" type="Texture" id=13]
+[ext_resource path="res://Characters/Enimes/miniBosses/GiantFlower/TeFlower6.png" type="Texture" id=14]
+[ext_resource path="res://Characters/Enimes/miniBosses/GiantFlower/TeFlower2.png" type="Texture" id=15]
+[ext_resource path="res://Characters/Enimes/miniBosses/GiantFlower/TeFlower16.png" type="Texture" id=16]
+[ext_resource path="res://Characters/Enimes/miniBosses/GiantFlower/TeFlower8.png" type="Texture" id=17]
+[ext_resource path="res://Characters/Enimes/DefaultScripts/DamagePlayer.gd" type="Script" id=18]
+[ext_resource path="res://Characters/Enimes/miniBosses/BossTakingDamage.gd" type="Script" id=19]
+[ext_resource path="res://Characters/Enimes/miniBosses/GiantFlower/TeFlower19.png" type="Texture" id=20]
+[ext_resource path="res://Characters/Enimes/miniBosses/GiantFlower/TeFlower20.png" type="Texture" id=21]
+[ext_resource path="res://Characters/Enimes/miniBosses/GiantFlower/TeFlower17.png" type="Texture" id=22]
+[ext_resource path="res://Characters/Enimes/miniBosses/GiantFlower/TeFlower18.png" type="Texture" id=23]
+[ext_resource path="res://Characters/Enimes/ParticalEffects/Explosions/32Size/32Size4.png" type="Texture" id=24]
+[ext_resource path="res://Characters/Enimes/ParticalEffects/Explosions/32Size/32Size5.png" type="Texture" id=25]
+[ext_resource path="res://Characters/Enimes/ParticalEffects/Explosions/32Size/32Size7.png" type="Texture" id=26]
+[ext_resource path="res://Characters/Enimes/ParticalEffects/Explosions/32Size/32Size6.png" type="Texture" id=27]
+[ext_resource path="res://Characters/Enimes/ParticalEffects/Explosions/32Size/32Size3.png" type="Texture" id=28]
+[ext_resource path="res://Characters/Enimes/ParticalEffects/Explosions/32Size/32Size2.png" type="Texture" id=29]
+[ext_resource path="res://Characters/Enimes/ParticalEffects/Explosions/32Size/32Size1.png" type="Texture" id=30]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Flower"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 22 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Hitpoint/Head:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Hitpoint/ground:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Hitpoint/body:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "GiantFlowerDie"
+length = 4.0
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3, 0.45, 0.75, 1.1, 1.4, 1.55 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 8 ), ExtResource( 15 ), ExtResource( 1 ), ExtResource( 12 ), ExtResource( 8 ), ExtResource( 15 ), ExtResource( 1 ), null ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Hitpoint/Head:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3, 1.35, 1.4, 1.45, 1.5, 1.55 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 21.64, 18.34, 18.13, 1 ), Color( 21.64, 18.34, 18.13, 1 ), Color( 5.73, 1.93, 1.91, 1 ), Color( 5.73, 1.93, 1.91, 1 ), Color( 21.64, 18.34, 18.13, 1 ), Color( 21.64, 18.34, 18.13, 1 ), Color( 5.73, 1.93, 1.91, 1 ), Color( 5.73, 1.93, 1.91, 1 ), Color( 21.64, 18.34, 18.13, 1 ), Color( 21.64, 18.34, 18.13, 1 ), Color( 5.73, 1.93, 1.91, 1 ), Color( 5.73, 1.93, 1.91, 1 ), Color( 21.64, 18.34, 18.13, 1 ), Color( 21.64, 18.34, 18.13, 1 ), Color( 5.73, 1.93, 1.91, 1 ), Color( 5.73, 1.93, 1.91, 1 ), Color( 21.64, 18.34, 18.13, 1 ), Color( 21.64, 18.34, 18.13, 1 ), Color( 5.73, 1.93, 1.91, 1 ), Color( 5.73, 1.93, 1.91, 1 ), Color( 21.64, 18.34, 18.13, 1 ), Color( 21.64, 18.34, 18.13, 1 ), Color( 5.73, 1.93, 1.91, 1 ), Color( 5.73, 1.93, 1.91, 1 ), Color( 21.64, 18.34, 18.13, 1 ), Color( 21.64, 18.34, 18.13, 1 ), Color( 5.73, 1.93, 1.91, 1 ), Color( 5.73, 1.93, 1.91, 1 ), Color( 21.64, 18.34, 18.13, 1 ), Color( 21.64, 18.34, 18.13, 1 ), Color( 5.73, 1.93, 1.91, 1 ), Color( 5.73, 1.93, 1.91, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("DeathSprites/exploshion:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ null, null, ExtResource( 30 ), ExtResource( 29 ), ExtResource( 28 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 27 ), ExtResource( 26 ), null ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("DeathSprites/exploshion2:texture")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ null, null, ExtResource( 30 ), ExtResource( 29 ), ExtResource( 28 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 27 ), ExtResource( 26 ), null, null, null, ExtResource( 30 ), ExtResource( 29 ), ExtResource( 28 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 27 ), ExtResource( 26 ), null ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("DeathSprites/exploshion2:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0.05, 0.45, 0.65 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 6, -74 ), Vector2( 6, -74 ), Vector2( 7, -24 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Hitpoint/body:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.45 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -8, -74 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Hitpoint/body:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Hitpoint/ground:disabled")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/9/type = "method"
+tracks/9/path = NodePath(".")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 1.6 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "CreatVineSeed"
+} ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 8 ), ExtResource( 15 ), ExtResource( 1 ), ExtResource( 12 ), ExtResource( 8 ), ExtResource( 15 ), ExtResource( 1 ), ExtResource( 12 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.8 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "CanShoot"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Hitpoint/Head:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -67.5 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Hitpoint/Head:position")
+tracks/3/interp = 0
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 8, -82 ), Vector2( 12, -82 ), Vector2( 14.0001, -82 ), Vector2( 10.0001, -84 ), Vector2( 8, -82 ), Vector2( 12, -82 ), Vector2( 14, -82 ), Vector2( 12, -82 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Hitpoint/body:position")
+tracks/4/interp = 0
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -14, -52 ), Vector2( -8, -52 ), Vector2( -8, -52 ), Vector2( -8, -52 ), Vector2( -10, -52 ), Vector2( -8, -52 ), Vector2( -8, -52 ), Vector2( -8, -52 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Hitpoint/body:rotation_degrees")
+tracks/5/interp = 0
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ -218.6, -218.6, -218.6, -218.6, -218.6, -218.6, -218.6, -218.6 ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.7
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 11 ), ExtResource( 14 ), ExtResource( 10 ), ExtResource( 17 ), ExtResource( 5 ), ExtResource( 13 ), ExtResource( 8 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.3, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "Shoot"
+}, {
+"args": [  ],
+"method": "ShotCompleate"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Hitpoint/Head:rotation_degrees")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ -79.5, -79.5, -89.1, -159.1, -151.8, -83.6, -79.5 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Hitpoint/Head:position")
+tracks/3/interp = 0
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -4, -74 ), Vector2( -6, -72 ), Vector2( 4.00012, -72 ), Vector2( 8, -74 ), Vector2( 12, -72 ), Vector2( 10, -80 ), Vector2( 10, -80 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 0.7
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 7 ), ExtResource( 9 ), ExtResource( 3 ), ExtResource( 6 ), ExtResource( 4 ), ExtResource( 16 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.2, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "ShakeCamera"
+}, {
+"args": [  ],
+"method": "ShotCompleate"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Hitpoint/Head:rotation_degrees")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ -118.1, -63.5, -86.0, -66.7 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Hitpoint/Head:position")
+tracks/3/interp = 0
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 2, -96 ), Vector2( 18, -102 ), Vector2( 86, -16 ), Vector2( 86, -20 ), Vector2( 68, -24 ), Vector2( 52, -34 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Hitpoint/body:rotation_degrees")
+tracks/4/interp = 0
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 131.8, 22.5, -90.0, -90.0, -90.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Hitpoint/body:position")
+tracks/5/interp = 0
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -8, -50 ), Vector2( 46, -40 ), Vector2( 12, -44 ), Vector2( 0, -62 ), Vector2( -8, -74 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "GiantPlantMonsterSpawn"
+length = 6.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3, 6, 6.4, 6.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 22 ), ExtResource( 23 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 8 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 4 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 6.8 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "StartBattle"
+} ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Hitpoint/body:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 6.8 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Hitpoint/ground:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 6.8 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Hitpoint/Head:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 6.8 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="CapsuleShape2D" id=7]
+radius = 19.9307
+height = 35.2085
+
+[sub_resource type="CircleShape2D" id=8]
+radius = 30.0666
+
+[sub_resource type="CapsuleShape2D" id=9]
+height = 36.2163
+
+[sub_resource type="Animation" id=10]
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 16.96, 15.98, 13.45, 1 ), Color( 16.96, 15.98, 13.45, 1 ), Color( 24.2, 1, 1, 1 ), Color( 24.2, 1, 1, 1 ), Color( 16.96, 15.98, 13.45, 1 ), Color( 16.96, 15.98, 13.45, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="GiantPlantMonster" type="Node2D"]
+position = Vector2( -2496, 188 )
+script = ExtResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Flower = SubResource( 1 )
+anims/GiantFlowerDie = SubResource( 2 )
+anims/GiantFlowerMonster = SubResource( 3 )
+anims/GiantPlantFireShot = SubResource( 4 )
+anims/GiantPlantGroundCrush = SubResource( 5 )
+anims/GiantPlantMonsterSpawn = SubResource( 6 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 36, -64 )
+texture = ExtResource( 22 )
+
+[node name="VisibilityEnabler2D" type="VisibilityEnabler2D" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ShootPoint" type="Position2D" parent="."]
+position = Vector2( 32, -68 )
+
+[node name="TakingDamage" type="Node2D" parent="."]
+script = ExtResource( 19 )
+AreaWeakness = "BossProjectile"
+BodyWeakness = "DirtProjectile"
+
+[node name="TakingDamage2" type="Node2D" parent="."]
+script = ExtResource( 19 )
+AreaWeakness = "DirtProjectile"
+BodyWeakness = "DirtProjectile"
+
+[node name="Hitpoint" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 401
+script = ExtResource( 18 )
+EnimeDamage = 1
+
+[node name="Head" type="CollisionShape2D" parent="Hitpoint"]
+position = Vector2( 2, -96 )
+rotation = -2.06123
+shape = SubResource( 7 )
+disabled = true
+
+[node name="ground" type="CollisionShape2D" parent="Hitpoint"]
+position = Vector2( -2, 0 )
+shape = SubResource( 8 )
+disabled = true
+
+[node name="body" type="CollisionShape2D" parent="Hitpoint"]
+position = Vector2( -8, -50 )
+rotation = 2.30034
+shape = SubResource( 9 )
+disabled = true
+
+[node name="Hit" type="AnimationPlayer" parent="."]
+anims/BeenHit = SubResource( 10 )
+
+[node name="DeathSprites" type="Node2D" parent="."]
+
+[node name="exploshion" type="Sprite" parent="DeathSprites"]
+position = Vector2( -10, -48 )
+
+[node name="exploshion2" type="Sprite" parent="DeathSprites"]
+position = Vector2( 6, -74 )
+[connection signal="screen_exited" from="VisibilityEnabler2D" to="." method="_on_VisibilityEnabler2D_screen_exited"]
+[connection signal="area_entered" from="Hitpoint" to="TakingDamage" method="_on_Hitpoint_area_entered"]
+[connection signal="area_entered" from="Hitpoint" to="TakingDamage2" method="_on_Hitpoint_area_entered"]
+[connection signal="body_entered" from="Hitpoint" to="TakingDamage" method="_on_Hitpoint_body_entered"]
+[connection signal="body_entered" from="Hitpoint" to="TakingDamage2" method="_on_Hitpoint_body_entered"]
+[connection signal="body_entered" from="Hitpoint" to="Hitpoint" method="_on_Hitpoint_body_entered"]
+[connection signal="body_exited" from="Hitpoint" to="Hitpoint" method="_on_Hitpoint_body_exited"]

@@ -1,0 +1,125 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Characters/Enimes/Undead/RoofEnimes/Clemtchure/Clentcher.png" type="Texture" id=1]
+[ext_resource path="res://Characters/Enimes/Undead/RoofEnimes/Clemtchure/Clentcher3.png" type="Texture" id=2]
+[ext_resource path="res://Characters/Enimes/Undead/RoofEnimes/Clemtchure/ClentchureAttack.gd" type="Script" id=3]
+[ext_resource path="res://Characters/Enimes/Undead/RoofEnimes/Clemtchure/Clentcher2.png" type="Texture" id=4]
+[ext_resource path="res://Characters/Enimes/Undead/RoofEnimes/Clemtchure/Clentcher4.png" type="Texture" id=5]
+[ext_resource path="res://Characters/Enimes/DefaultScripts/Hitpoint.gd" type="Script" id=6]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Node2D
+
+var EnimeDamage = 2
+
+var pos = Vector2(0,200)
+
+onready var CheckGround = $GroundCheck
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	$Attack.set_process(false)
+
+	
+
+func _process(delta):
+	if CheckGround.is_colliding():
+		pos = CheckGround.get_collision_point()
+		CheckGround.enabled = false
+		
+		set_process(false)
+
+func _on_DetectPlayer_body_entered(body):
+	$Attack.set_process(true)
+	$Attack.distance =  pos.y-10-position.y
+	$Attack/Anim.play(\"Attack\")
+	
+
+
+func _on_Attack_body_entered(body):
+	if body.is_in_group(\"Player\"):
+		body.HealthUpdated(EnimeDamage)
+"
+
+[sub_resource type="SegmentShape2D" id=2]
+b = Vector2( 0, 200 )
+
+[sub_resource type="CapsuleShape2D" id=3]
+height = 8.22205
+
+[sub_resource type="Animation" id=4]
+resource_name = "Attack"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 1 ), ExtResource( 4 ), ExtResource( 2 ), ExtResource( 5 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "GoBackUp"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 1 ), ExtResource( 4 ), ExtResource( 2 ), ExtResource( 5 ), ExtResource( 1 ) ]
+}
+
+[sub_resource type="CircleShape2D" id=6]
+radius = 6.64202
+
+[node name="Clentchure" type="Node2D"]
+script = SubResource( 1 )
+
+[node name="GroundCheck" type="RayCast2D" parent="."]
+enabled = true
+cast_to = Vector2( 0, 200 )
+collision_mask = 3
+
+[node name="DetectPlayer" type="Area2D" parent="."]
+monitorable = false
+collision_layer = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectPlayer"]
+shape = SubResource( 2 )
+
+[node name="Attack" type="Area2D" parent="."]
+monitorable = false
+script = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="Attack"]
+texture = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack"]
+shape = SubResource( 3 )
+
+[node name="Anim" type="AnimationPlayer" parent="Attack"]
+anims/Attack = SubResource( 4 )
+anims/GoBackUp = SubResource( 5 )
+
+[node name="Hitpoint" type="Area2D" parent="Attack"]
+collision_layer = 4
+collision_mask = 16
+script = ExtResource( 6 )
+
+[node name="Eye" type="CollisionShape2D" parent="Attack/Hitpoint"]
+position = Vector2( -0.376938, 15.0775 )
+shape = SubResource( 6 )
+[connection signal="body_entered" from="DetectPlayer" to="." method="_on_DetectPlayer_body_entered"]
+[connection signal="area_entered" from="Attack" to="Attack" method="_on_Attack_area_entered"]
+[connection signal="body_entered" from="Attack" to="." method="_on_Attack_body_entered"]
+[connection signal="area_entered" from="Attack/Hitpoint" to="Attack/Hitpoint" method="_on_Hitpoint_area_entered"]

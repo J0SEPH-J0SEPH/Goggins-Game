@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/ccorpsStyle-Final.ogg-1a7508d31776c827341137e3432c9cd9.oggstr"
+
+[deps]
+
+source_file="res://Music and Sounds/Music/ccorpsStyle-Final.ogg"
+dest_files=[ "res://.import/ccorpsStyle-Final.ogg-1a7508d31776c827341137e3432c9cd9.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=20.0

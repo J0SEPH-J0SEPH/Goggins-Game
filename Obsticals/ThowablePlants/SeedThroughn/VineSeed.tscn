@@ -1,0 +1,111 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Obsticals/ThowablePlants/SeedThroughn/Seed4.png" type="Texture" id=1]
+[ext_resource path="res://Obsticals/ThowablePlants/SeedThroughn/VineSeed.gd" type="Script" id=2]
+[ext_resource path="res://Obsticals/ThowablePlants/SeedThroughn/Seed1.png" type="Texture" id=3]
+[ext_resource path="res://Obsticals/ThowablePlants/SeedThroughn/Seed3.png" type="Texture" id=4]
+[ext_resource path="res://Obsticals/ThowablePlants/SeedThroughn/seedVineHead.png" type="Texture" id=5]
+[ext_resource path="res://Obsticals/ThowablePlants/SeedThroughn/Seed2.png" type="Texture" id=6]
+[ext_resource path="res://Obsticals/ThowablePlants/SeedThroughn/seedVine.png" type="Texture" id=7]
+[ext_resource path="res://Obsticals/Climbables/Vines/Vine.gd" type="Script" id=8]
+
+[sub_resource type="CircleShape2D" id=1]
+
+[sub_resource type="Animation" id=2]
+resource_name = "SeedOpen"
+tracks/0/type = "value"
+tracks/0/path = NodePath("VineSeedSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 1 ), ExtResource( 4 ), ExtResource( 6 ), ExtResource( 3 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.8 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "BeginGrouth"
+} ]
+}
+
+[sub_resource type="RectangleShape2D" id=3]
+
+[node name="VineSeed" type="Node2D"]
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="TheVine" type="Node2D" parent="."]
+
+[node name="Mask" type="ColorRect" parent="TheVine"]
+margin_left = -20.0
+margin_top = -352.0
+margin_right = 19.0
+margin_bottom = -4.0
+rect_clip_content = true
+color = Color( 0.631373, 0.596078, 0.596078, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Head" type="Area2D" parent="TheVine/Mask"]
+position = Vector2( 20, 360 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TheVine/Mask/Head"]
+position = Vector2( 0, -20 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="TheVine/Mask/Head"]
+texture = ExtResource( 5 )
+
+[node name="Body" type="TextureRect" parent="TheVine/Mask"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 20.0
+margin_bottom = 36.0
+texture = ExtResource( 7 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VineSeedSprite" type="Sprite" parent="."]
+position = Vector2( 0, -16 )
+texture = ExtResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/SeedOpen = SubResource( 2 )
+
+[node name="VisibilityEnabler2D" type="VisibilityEnabler2D" parent="."]
+
+[node name="Vine" type="Area2D" parent="."]
+monitoring = false
+monitorable = false
+script = ExtResource( 8 )
+SetCustomOffsetHeight = 84
+LadderType = 2
+Hastop = true
+
+[node name="HitBox" type="CollisionShape2D" parent="Vine"]
+shape = SubResource( 3 )
+[connection signal="area_shape_entered" from="TheVine/Mask/Head" to="." method="_on_Head_area_shape_entered"]
+[connection signal="viewport_entered" from="VisibilityEnabler2D" to="." method="_on_VisibilityEnabler2D_viewport_entered"]
+[connection signal="viewport_exited" from="VisibilityEnabler2D" to="." method="_on_VisibilityEnabler2D_viewport_exited"]
+[connection signal="body_entered" from="Vine" to="Vine" method="_on_Vine_body_entered"]
+[connection signal="body_exited" from="Vine" to="Vine" method="_on_Vine_body_exited"]

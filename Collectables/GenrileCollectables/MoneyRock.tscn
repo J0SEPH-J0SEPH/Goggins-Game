@@ -1,0 +1,159 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://Collectables/GenrileCollectables/Money/Gems/GemRocks/GemRock5.png" type="Texture" id=1]
+[ext_resource path="res://Collectables/GenrileCollectables/Money/Gems/GemRocks/GemRock2.png" type="Texture" id=2]
+[ext_resource path="res://Collectables/GenrileCollectables/Money/Gems/GemRocks/GemRock6.png" type="Texture" id=3]
+[ext_resource path="res://Collectables/GenrileCollectables/Money/Gems/GemRocks/GemRock1.png" type="Texture" id=4]
+[ext_resource path="res://Collectables/GenrileCollectables/Money/Gems/GemRocks/GemRock4.png" type="Texture" id=5]
+[ext_resource path="res://moneyRock.gd" type="Script" id=6]
+[ext_resource path="res://Collectables/GenrileCollectables/Money/Gems/GemRocks/GemRock3.png" type="Texture" id=7]
+[ext_resource path="res://Collectables/GenrileCollectables/Money/Gems/GemSpout.gd" type="Script" id=8]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 12.0
+
+[sub_resource type="Animation" id=2]
+resource_name = "Destroyed"
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpriteHolder/Sprite3:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 5 ), ExtResource( 1 ), ExtResource( 3 ), null ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "HitLeft"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpriteHolder:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 1, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "ChangeSprite"
+} ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "HitRight"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpriteHolder:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -1, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "ChangeSprite"
+} ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "HitWall"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpriteHolder:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 1 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "ChangeSprite"
+} ]
+}
+
+[node name="MoneyRock" type="Node2D"]
+script = ExtResource( 6 )
+
+[node name="SpriteHolder" type="Node2D" parent="."]
+position = Vector2( 0, 1 )
+
+[node name="Sprite1" type="Sprite" parent="SpriteHolder"]
+position = Vector2( 0, -16 )
+texture = ExtResource( 4 )
+
+[node name="Sprite2" type="Sprite" parent="SpriteHolder"]
+visible = false
+position = Vector2( 0, -16 )
+texture = ExtResource( 2 )
+
+[node name="Sprite3" type="Sprite" parent="SpriteHolder"]
+visible = false
+position = Vector2( 0, -16 )
+texture = ExtResource( 7 )
+
+[node name="RockHit" type="Area2D" parent="."]
+position = Vector2( 0, -10 )
+monitorable = false
+collision_layer = 0
+collision_mask = 256
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RockHit"]
+shape = SubResource( 1 )
+
+[node name="HitRock" type="AnimationPlayer" parent="."]
+anims/Destroyed = SubResource( 2 )
+anims/HitLeft = SubResource( 3 )
+anims/HitRight = SubResource( 4 )
+anims/HitWall = SubResource( 5 )
+[connection signal="area_entered" from="RockHit" to="." method="_on_RockHit_area_entered"]
+[connection signal="area_shape_entered" from="RockHit" to="." method="_on_RockHit_area_shape_entered"]
