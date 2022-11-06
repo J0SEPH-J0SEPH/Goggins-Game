@@ -1,0 +1,20 @@
+This project was created during university to allow me to test Godot, 
+The goal I had was to make a game with a save system and working menus,
+A camera which works in a 2d pixel art space-
+The Challenges are-
+Pixels must be scaled correctly to not stretch,
+Camera must be able to move around without the Pixels looking jittery,
+
+Problems arise when the camera is set to have smooth movement,
+Problems arise when the player moves back and forth causing sickly camera movements, 
+Problems arise when the camera moves diagonally casing pixels to stretch.
+
+A lot of old pixel art games address some of these problems by clamping the camera to only moving on one axis, limit how slow the camera cam move before it comes to a stop, have an aria around the player where they can move without it affecting the camera.
+
+This porgect still has some issues which I would go on to fix in later projects for example:
+
+The camera doesnt transition between arias
+
+When the player enters a new aria they can keep moving even if they are off screen for some time.
+
+In later projects I hold the player in place and have the camera move to the next part of the level which is easier on peoples eyes. 
